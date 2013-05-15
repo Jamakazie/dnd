@@ -8,3 +8,9 @@ context = {}
 context['races'] = races
 def race_index(request):
 	return render_to_response('race_index.html', context, context_instance = RequestContext(request))
+
+def info(request, params):
+	race = params.split('/')
+	race = race[0]
+	context['race'] = race
+	return render_to_response('race_info.html', context, context_instance = RequestContext(request))
