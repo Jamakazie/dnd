@@ -25,8 +25,8 @@
 		{% block nav %}
 		{% endblock %} 
 		<div id="main" class="container">
-		{% block main%}  
-		{% endblock %}
+			{% block main%}  
+			{% endblock %}
 		</div>
 	</body>
 
