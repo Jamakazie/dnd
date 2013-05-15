@@ -1,0 +1,14 @@
+{% extends 'template.html'%}
+{% block nav %}
+	<div class="clear"></div>
+	<div class="navbar">
+		<div class="navbar-inner" id='navbar-sub'>
+			<a class="brand" href="/History/">History</a>
+			<ul class="nav">
+				<li><a href="/History/Nyrium">Nyrium</a></li>
+				<li><a href="/History/Palladium">Palladium</a></li>
+				<li><a href="/History/Terror">The Terror</a></li>
+			</ul>
+		</div>
+	</div>
+{% endblock %}

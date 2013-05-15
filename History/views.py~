@@ -17,4 +17,4 @@ def ores(request):
 
 def nyrium(request):
 	context = {}
-	return render_to_response('history_nyrium.html', context, context_instance = RequestContext(request))
+	return render_to_response('histroy_nyrium.html', context, context_instance = RequestContext(request))

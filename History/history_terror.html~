@@ -1,0 +1,6 @@
+{% extends 'history_template.html' %}
+{% block main %}
+<p>The terror is a recent phenomenom to the world.  There have been a series of unexplained attacks on various resources, ranging from agricultural to ore.  Large quantites of resources have been plundered from these sites and the people who are left alive are but husks of their former self.  To this date there has been no explination for what causes these strange occurences.</p>
+<p>More recently, trade routes have been hit by this strange occurance and merchants have been attacked, their cargos being raided in full.</p>
+<p>Government froms across the world have begun taking a more keen interest in the terror...</p>
+{% endblock %}

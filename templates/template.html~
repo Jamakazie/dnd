@@ -12,19 +12,21 @@
 	</head>
 
 	<body>
-		<div class="navbar">
+		<div class="navbar" id='main-navbar'>
 			<div class="navbar-inner">
 				<a class="brand" href="/">Dungoens And Dragons</a>
 				<ul class="nav">
-					<li><a href="Races">Races</a></li>
-					<li><a href="History">History</a></li>
-					<li><a href="Login">Login</a></li>
+					<li><a href="/History">History</a></li>
+					<li><a href="/Races">Races</a></li>
+					<li><a href="/Login">Login</a></li>
 				</ul>
 			</div>
-		</div>
-
+		</div
+		{% block nav %}
+		{% endblock %} 
 		<div id="main" class="container">
-			{% block main%}  {% endblock %}
+		{% block main%}  
+		{% endblock %}
 		</div>
 	</body>
 

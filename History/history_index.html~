@@ -1,0 +1,10 @@
+{% extends 'history_template.html' %}
+
+{% block main %}
+	<h2> History </h2>
+	<div id="main">
+		<p>The year is 1307.  The world has seen relative peace for the past 150 years.  There have been minor skirmishes, but nothing officials initated by any government.   It could been seen as a golden age for the people, as technology, art and culture, magic, and philosophy have all seen great strides especially when compared to the previous 1300 years.  Because of the relative peace, the governments often organize a 'games' or sorts where champions from each of their empires engage in fierce combat to remind themselves of their old warring ways.  These combats are entirely safe (no one has ever died) as there are many charms placed my elven magic to ensure that no mortal blows can be dealt.</p>
+		<p>There have been two recent exciting discoveries in the current world.  One of these is a boon to warfare/technological resources; the other holds strange mystical powers that have only come under scrutiny in the past couple of years.  Both of these resoruces have proven extremely difficult to harvest and are an extreme commoditity.  The dwarves have found the only known deposity of palladium in their territory and have been dedicating a large portion of their resoruces to understanding this unqiue ore.  The gnomes have discovered the mystical ore nyrium and have been working with the elf's to see what purposes it can be used for.</p>
+		<p>Recently, 'the terror' has become an increasingly complex problemf or the world.  The attacks have mostly been on inconsequential outposts and resource locations so it has not warranted any offical response to what needs to be done, however, many people have grown incredibly weary traveling outside of established and partolled routes. </p>
+	</div>
+{% endblock %}
