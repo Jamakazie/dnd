@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block nav %}
+	<div class="clear"></div>
+	<div class="navbar">
+		<div class="navbar-inner" id="navbar-sub">
+			<a class="brand" href="/Races/">Races</a>
+			<ul class="nav">
+				{% for race in races%}
+					<li><a href="/Races/Info/{{race}}">{{race}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+

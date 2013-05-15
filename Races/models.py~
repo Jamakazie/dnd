@@ -3,8 +3,6 @@ from django.db import models
 # Create your models here.
 class race(models.Model):
 	race_name = models.CharField(max_length=50)
-	def __unicode__(self):
-		return self.race_name
 
 class race_desc(models.Model):
 	r_id = models.ForeignKey(race)
