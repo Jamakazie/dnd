@@ -15,11 +15,7 @@ class Fighter(Character):
 		self.equipment()
 	
 	def stats(self):
-		bonus = 0
-		remaining = self.level
-		while(remaining > 4):
-			remaining -= 4
-			bonus += 1
+		bonus = self.level  / 4 
 		strength = randrange(12,19) + bonus
 		constitution = randrange(12,19)
 		dexterity = randrange(7,14)
