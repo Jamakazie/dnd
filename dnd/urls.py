@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^$', include('main.urls')),
     url(r'^Races/', include('Races.urls')),
     url(r'^History/', include('History.urls')),
+    url(r'^Admin/', include('Admin.urls')),
 )
