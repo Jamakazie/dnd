@@ -24,6 +24,11 @@ def admin_ajax_character(request):
 	response = name + level + cclass
 	fig = fighter.Fighter(level, 'Orc', cclass, name)
 	context = {}
+	request.session['generated'] = fig
 	context['c'] = fig
 	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
 	return HttpResponse(return_str)
+def commit(request):
+	character = request.session['generated']
+	character.commit()
+	return HttpResponse("success")
