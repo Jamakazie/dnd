@@ -5,7 +5,7 @@ $(document).ready(function(){
 			type: 'get',
 			data: $('form').serialize(),
 			success: function(resp){
-				alert(resp);
+				$('div#c_info').html(resp);
 			}
 		});
 		

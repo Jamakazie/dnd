@@ -2,15 +2,12 @@
 {% block main %}
 	<div id='admin_create'>
 		<h1> Character Creation</h2>
-		<form>
+		<form class="form-inline">
 			<fieldset>
 				<legend> Character Information </legend>
-				<label>Character Name</label>
-				<input type="text" placeholder="name..." name="name" id="name">
-				<label>Level</label>
-				<input type="text" placeholder="level..." name="level" id="level">
-				<label>Class</label>
-				<select id="class" name="class">
+				<input type="text" placeholder="Name" name="name" id="name" class="span2">
+				<input type="text" placeholder="Level" name="level" id="level" class="span1">
+				<select id="class" name="class" class="span2">
 					<option>Fighter</option>
 					<option>Priest</option>
 					<option>Rogue</option>
@@ -20,5 +17,7 @@
 				<div id="submit" class="btn">Generate</div>
 			</fieldset>
 		</form>
+	</div>
+	<div id="c_info">
 	</div>
 {% endblock %}

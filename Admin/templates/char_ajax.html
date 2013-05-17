@@ -1,23 +1,22 @@
 {% block charinfo %}
-	<div id="c_name"> {{ c.name }} </div>
-	<div id="c_race"> {{c.race}} </div>
+	<div id="c_name"><span id="c_race"> {{c.race}} </span> {{ c.name }} </div>
 	<div id="c_level">Level: {{ c.level}}</div>
 	<div id="c_alignment">{{c.alignment.0}} {{c.alignment.1}} {{ c.alignment.2}} </div>
 	<div id="c_attack">Base Attack Bonus: {{c.base_attack_bonus}}</div>
 
 	<div id="c_sheet">
 		<div id="c_stats">
-			<div id="stats_strength">Str: {{c.stats.strength}}</div>
-			<div id="stats_dexterity">Dex:  {{c.stats.dexterity}}</div>
-			<div id="stats_constitution">Con:  {{c.stats.constitution}}</div>
-			<div id="stats_wisdom">Wis:  {{c.stats.wisdom}}</div>
-			<div id="stats_intelliegence">Int:  {{c.stats.intelligence}}</div>
-			<div id="stats_charisma">Cha: {{c.stats.charisma}}</div>
+			<div id="stats_strength" class="input-prepend"><span class="add-on">Str</span><span class="uneditable-input span1">{{c.stats.strength}}</span></div>
+			<div id="stats_dexterity" class="input-prepend"><span class="add-on">Dex</span><span class="uneditable-input span1">{{c.stats.dexterity}}</span></div>
+			<div id="stats_constitution" class="input-prepend"><span class="add-on">Con</span><span class="uneditable-input span1">{{c.stats.constitution}}</span></div>
+			<div id="stats_wisdom" class="input-prepend"><span class="add-on">Wis</span><span class="uneditable-input span1">{{c.stats.wisdom}}</span></div>
+			<div id="stats_intelliegence" class="input-prepend"><span class="add-on">Int</span><span class="uneditable-input span1">{{c.stats.intelligence}}</span></div>
+			<div id="stats_charisma" class="input-prepend"><span class="add-on">Cha</span><span class="uneditable-input span1">{{c.stats.charisma}}</span></div>
 		</div>
 		<div id="c_saves">
-			<div id="c_fort">Fort:  {{c.saves.fort}} </div>
-			<div id="c_reflex"> Reflex: {{c.saves.reflex}}</div>
-			<div id="c_will">Will: {{c.saves.will}}</div>
+			<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}}</span></div>
+			<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}</span></div>
+			<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}}</span></div>
 		</div>
 		<div id="c_skills">
 			{% for skill in c.skills %}

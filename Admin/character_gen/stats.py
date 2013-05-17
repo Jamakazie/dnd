@@ -1,5 +1,5 @@
 class Stats:
-	def __init__(self, strength, dexterity, constitution, wisdom, intelligence, charisma):
+	def __init__(self, strength,constitution, dexterity, wisdom, intelligence, charisma):
 		self.strength = strength
 		self.dexterity = dexterity
 		self.constitution = constitution

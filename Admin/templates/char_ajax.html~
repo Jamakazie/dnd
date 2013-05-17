@@ -7,11 +7,11 @@
 
 	<div id="c_sheet">
 		<div id="c_stats">
-			<div id="stats_strength">Str: {{c.stats.strength}}</div>
+			<div id="stats_strength" class="input-prepend"><span class="add-on">Str</span><span class="uneditable-input span">  {{c.stats.strength}}</span></div>
 			<div id="stats_dexterity">Dex:  {{c.stats.dexterity}}</div>
 			<div id="stats_constitution">Con:  {{c.stats.constitution}}</div>
 			<div id="stats_wisdom">Wis:  {{c.stats.wisdom}}</div>
-			<div id="stats_intelliegence">Int:  {{c.stats.intellience}}</div>
+			<div id="stats_intelliegence">Int:  {{c.stats.intelligence}}</div>
 			<div id="stats_charisma">Cha: {{c.stats.charisma}}</div>
 		</div>
 		<div id="c_saves">
