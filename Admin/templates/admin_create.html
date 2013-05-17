@@ -1,0 +1,24 @@
+{% extends 'admin_template.html' %}
+{% block main %}
+	<div id='admin_create'>
+		<h1> Character Creation</h2>
+		<form>
+			<fieldset>
+				<legend> Character Information </legend>
+				<label>Character Name</label>
+				<input type="text" placeholder="name..." name="name" id="name">
+				<label>Level</label>
+				<input type="text" placeholder="level..." name="level" id="level">
+				<label>Class</label>
+				<select id="class" name="class">
+					<option>Fighter</option>
+					<option>Priest</option>
+					<option>Rogue</option>
+					<option>Mage</option>
+				</select>
+				<br/>
+				<div id="submit" class="btn">Generate</div>
+			</fieldset>
+		</form>
+	</div>
+{% endblock %}

@@ -29,6 +29,7 @@ TEMPLATE_DIRS = (
 	BASE_DIR + '/main',
 	BASE_DIR + '/Races',
 	BASE_DIR + '/History',
+	BASE_DIR + '/Admin/templates',
 )
 
 ALLOWED_HOSTS = []

@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'main',
     'Races',
     'History',
+    'Admin',
 )
 
 STATIC_ROOT = BASE_DIR + '/static/'

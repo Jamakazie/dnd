@@ -1,16 +1,16 @@
 class Character(object):
 	"""The Charater Creation Class"""
-	money_values = [100, 300, 900, 2700]
+	gold_values = [100, 300, 900, 2700]
 	def __init__(self, level, race, name="No name"):
 		self.level = level
-		self.race = level
+		self.race = race 
 		self.name = name
-		self.money()
+		self.gold()
 
-	def money(self):
-		if self.level <= len(self.money_values):
-			self.money = self.money_values[self.level]
+	def gold(self):
+		if self.level <= len(self.gold_values):
+			self.gold = self.gold_values[self.level]
 		else:
-			self.money = level * 300
+			self.gold = self.level * 300
 	
 	
