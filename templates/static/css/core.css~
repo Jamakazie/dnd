@@ -8,3 +8,6 @@ tr.ajax_view{
 	cursor: hand;
 	cursor: pointer;
 }
+.myspan{
+	width: 20px;
+}

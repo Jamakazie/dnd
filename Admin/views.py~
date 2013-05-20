@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from Admin.models import character as c
 from Admin.ajax import render_block_to_string
-from Admin.character_gen import fighter, character
+from Admin.character_gen import fighter, character, priest, rogue, mage
 import json
 
 # Create your views here.

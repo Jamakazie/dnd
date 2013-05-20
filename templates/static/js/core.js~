@@ -21,6 +21,9 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("#person_submit").click(function(){
+		alert($("create_person").serialize());
+	});
 	
 });
 function commit(){
@@ -39,8 +42,4 @@ function commit(){
 			}
 		});
 	});
-}
-function toMod(raw){
-	var mod = Math.floor((raw - 10 ) / 2);
-	return mod;
 }

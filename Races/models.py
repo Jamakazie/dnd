@@ -13,17 +13,3 @@ class race_desc(models.Model):
 	race_stats = models.TextField()
 	race_skills = models.TextField()
 	race_misc = models.TextField()
-
-class people(models.Model):
-	isknown = models.BooleanField(default=False)
-	ismet = models.BooleanField(default=False)
-	description = models.TextField()
-	race = models.CharField(max_length=50)
-	title = models.CharField(max_length=50)
-
-class people_dm(models.Model):
-	p_id = models.ForeignKey(people)
-	stats = models.TextField()
-	skills = models.TextField()
-	level  = models.CharField(max_length=10)
-	dm_desc = models.TextField()

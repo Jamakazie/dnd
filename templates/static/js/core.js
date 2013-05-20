@@ -21,6 +21,9 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("#person_submit").click(function(){
+		alert($("#create_person").serialize());
+	});
 	
 });
 function commit(){

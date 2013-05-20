@@ -58,6 +58,10 @@ def ajax_view(request, params):
 	return_str += render_block_to_string('char_ajax.html', 'view', context)
 	return HttpResponse(return_str)
 
+def admin_person(request):
+	context = {}
+	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))
+
 def statMods(stats, context):
 	context['strMod'] = toMod(stats['strength'])
 	context['dexMod'] = toMod(stats['dexterity'])

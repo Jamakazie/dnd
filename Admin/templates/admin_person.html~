@@ -1,0 +1,24 @@
+{% extends 'admin_template.html' %}
+{% block main%}
+	<h1> Create a Person</h1>
+	<form id="create_person"> {% csrf_token %}
+		<input name="title" type="text" placeholder="Title" class="span2"/>
+		<input type="text" placeholder="Name" name="name" class="span2"/>
+		<select id="race" name="race" class="span2">
+			<option>Dwarf</option>
+			<option>Elf</option>
+			<option>Gnome</option>
+			<option>Half-Elf</option>
+			<option>Half-Orc</option>
+			<option>Halfling</option>
+			<option>Kobold</option>
+			<option>Orc</option>
+		</select>
+		<div id="p_desc"><strong>Player Description:</strong></div>
+			<textarea rows="3" class="desc" name="desc"></textarea>
+		<div id="dm_desc"><strong>DM Description:</strong></div>
+			<textarea rows="3" class="desc" name="dm_desc"></textarea>
+	</form>
+	<button class="btn" id="person_submit">Create A Character Sheet</button>
+	<button class="btn" id="person_submit">Create</button>
+{% endblock %}
