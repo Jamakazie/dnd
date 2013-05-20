@@ -11,6 +11,16 @@ $(document).ready(function(){
 		});
 		
 	});
+	$('.ajax_view').click(function(){
+		id = $(this).attr('id');
+		$.ajax({
+			url: '/Admin/Ajax/View/' + id,
+			type: 'get',
+			success: function(resp){
+				$('div#characters').html(resp);
+			}
+		});
+	});
 	
 });
 function commit(){

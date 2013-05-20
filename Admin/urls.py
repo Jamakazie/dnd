@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 	url(r'^View', views.admin_view, name='admin_view'),
 	url(r'^Ajax/Character', views.admin_ajax_character, name='admin_ajax_character'),
 	url(r'^Ajax/Commit', views.commit, name='commit'),
+	url(r'^Ajax/View/(.*)', views.ajax_view, name='ajax_view'),
 )

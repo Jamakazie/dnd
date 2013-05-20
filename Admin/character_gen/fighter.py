@@ -10,7 +10,7 @@ class Fighter(Character):
 		Character.__init__(self,level, race, name)
 		self.cclass = cclass
 		self.stats()
-		self.base_attack_bonus()
+		self.base_attack_bonus(1.0)
 		self.base_saves()
 		self.alignment()
 		self.equipment()
@@ -26,9 +26,6 @@ class Fighter(Character):
 		charisma = randrange (9,16)
 		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma)
 		self.stats = statvalues
-	
-	def base_attack_bonus(self):
-		self.base_attack_bonus = self.level
 
 	def base_saves(self):
 		saves = {}

@@ -1,22 +1,22 @@
 {% block charinfo %}
-	<div id="c_name"><span id="c_race"> {{c.race}} </span> {{ c.name }} </div>
+	<div id="c_name"><span id='c_class'>{{c.cclass}}</span> <span id="c_race"> {{c.race}} </span> {{ c.name }} </div>
 	<div id="c_level">Level: {{ c.level}}</div>
 	<div id="c_alignment">{{c.alignment.0}} {{c.alignment.1}} {{ c.alignment.2}} </div>
 	<div id="c_attack">Base Attack Bonus: {{c.base_attack_bonus}}</div>
 
 	<div id="c_sheet">
 		<div id="c_stats">
-			<div id="stats_strength" class="input-prepend"><span class="add-on">Str</span><span class="uneditable-input span1">{{c.stats.strength}}</span></div>
-			<div id="stats_dexterity" class="input-prepend"><span class="add-on">Dex</span><span class="uneditable-input span1">{{c.stats.dexterity}}</span></div>
-			<div id="stats_constitution" class="input-prepend"><span class="add-on">Con</span><span class="uneditable-input span1">{{c.stats.constitution}}</span></div>
-			<div id="stats_wisdom" class="input-prepend"><span class="add-on">Wis</span><span class="uneditable-input span1">{{c.stats.wisdom}}</span></div>
-			<div id="stats_intelliegence" class="input-prepend"><span class="add-on">Int</span><span class="uneditable-input span1">{{c.stats.intelligence}}</span></div>
-			<div id="stats_charisma" class="input-prepend"><span class="add-on">Cha</span><span class="uneditable-input span1">{{c.stats.charisma}}</span></div>
+			<div id="stats_strength" class="input-prepend input-append"><span class="add-on">Str</span><span class="uneditable-input myspan">{{c.stats.strength}}</span><span class='add-on'>{{strMod}}</span></div>
+			<div id="stats_dexterity" class="input-prepend input-append"><span class="add-on">Dex</span><span class="uneditable-input myspan">{{c.stats.dexterity}}</span><span class="add-on">{{dexMod}}</span></div>
+			<div id="stats_constitution" class="input-prepend input-append"><span class="add-on">Con</span><span class="uneditable-input myspan">{{c.stats.constitution}}</span><span class="add-on">{{conMod}}</span></div>
+			<div id="stats_wisdom" class="input-prepend input-append"><span class="add-on">Wis</span><span class="uneditable-input myspan">{{c.stats.wisdom}}</span><span class="add-on">{{wisMod}}</span></div>
+			<div id="stats_intelliegence" class="input-prepend input-append"><span class="add-on">Int</span><span class="uneditable-input myspan">{{c.stats.intelligence}}</span><span class="add-on">{{intMod}}</span></div>
+			<div id="stats_charisma" class="input-prepend input-append"><span class="add-on">Cha</span><span class="uneditable-input myspan">{{c.stats.charisma}}</span><span class="add-on">{{chaMod}}</span></div>
 		</div>
 		<div id="c_saves">
-			<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}}</span></div>
-			<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}</span></div>
-			<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}}</span></div>
+			<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}} {{conMod}}</span></div>
+			<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}  {{dexMod}}</span></div>
+			<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}} {{wisMod}}</span></div>
 		</div>
 		<div id="c_skills">
 			{% for skill in c.skills %}
@@ -45,5 +45,13 @@
 					{% endfor %}
 				</tbody>
 			</table>
+
 	</div>
+{% endblock %}
+{% block commit %}
+	<button class='btn' id='commit'>Commit</button>
+{% endblock %}
+
+{% block view %}
+	<a href="/Admin/View"><button class = 'btn' id='goback'>Go Back </button></a>
 {% endblock %}

@@ -42,8 +42,8 @@ class Fighter(Character):
 		ge = ['good', 'neutral', 'evil']
 		ln = ['loyal', 'self', 'disloyal']
 		alignment = []
-		alignment.append(choice(ge))
 		alignment.append(choice(lc))
+		alignment.append(choice(ge))
 		alignment.append(choice(ln))
 		self.alignment = alignment
 	

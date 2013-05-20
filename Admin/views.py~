@@ -1,9 +1,10 @@
+import math
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
-from Admin.models import character
+from Admin.models import character as c
 from Admin.ajax import render_block_to_string
-from Admin.character_gen import fighter
+from Admin.character_gen import fighter, character
 import json
 
 # Create your views here.
@@ -15,7 +16,7 @@ def admin_create(request):
 	return render_to_response('admin_create.html', context, context_instance=RequestContext(request))
 def admin_view(request):
 	context = {}
-	context['characters'] = character.objects.all()
+	context['characters'] = c.objects.all()
 	return render_to_response('admin_view.html', context, context_instance = RequestContext(request))
 def admin_ajax_character(request):
 	name = request.GET['name']
@@ -26,9 +27,40 @@ def admin_ajax_character(request):
 	context = {}
 	request.session['generated'] = fig
 	context['c'] = fig
+	statMods(fig.stats__dict__, context)
 	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
+	return_str += render_block_to_string('char_ajax.html', 'commit', context)
 	return HttpResponse(return_str)
 def commit(request):
 	character = request.session['generated']
 	character.commit()
-	pass
+	request.session['generated'] = None
+	return HttpResponse("success")
+
+def ajax_view(request, params):
+	context = {}
+	param = params.split('/')
+	i = param[0]
+	charfromdb = c.objects.get(pk=i)
+	char = character.Character('20', 'temp', 'lol')
+	char.fromCharacterDB(charfromdb)
+	context['c'] = char
+	statMods(char.stats, context)
+	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
+	return_str += render_block_to_string('char_ajax.html', 'view', context)
+	return HttpResponse(return_str)
+
+def statMods(stats, context):
+	context['strMod'] = toMod(stats['strength'])
+	context['dexMod'] = toMod(stats['dexterity'])
+	context['conMod'] = toMod(stats['constitution'])
+	context['wisMod'] = toMod(stats['wisdom'])
+	context['intMod'] = toMod(stats['intelligence'])
+	context['chaMod'] = toMod(stats['charisma'])
+
+def toMod(stat):
+	mod = math.floor((stat - 10) / 2)
+	if( mod >= 0):
+		return "+" + str(int(mod))
+	else:
+		return str(int(mod))

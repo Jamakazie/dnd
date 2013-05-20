@@ -4,3 +4,10 @@ div#navbar-sub{
 div.left{
 	margin-left: 20px;
 }
+tr.ajax_view{
+	cursor: hand;
+	cursor: pointer;
+}
+.myspan{
+	width: 20px;
+}

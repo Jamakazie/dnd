@@ -11,6 +11,16 @@ $(document).ready(function(){
 		});
 		
 	});
+	$('.ajax_view').click(function(){
+		id = $(this).attr('id');
+		$.ajax({
+			url: '/Admin/Ajax/View/' + id,
+			type: 'get',
+			success: function(resp){
+				$('div#characters').html(resp);
+			}
+		});
+	});
 	
 });
 function commit(){
@@ -21,7 +31,7 @@ function commit(){
 			success: function(resp){
 				if(resp === 'success'){
 					$('#commit').remove();
-					$('#c_sheet').append('<span class="span2" uneditable-input>Commit Successful</span>');
+					$('#c_sheet').append('<span class="span2 uneditable-input">Commit Successful</span>');
 				}
 				else{
 					alert("Something bad happened :D" + resp);
@@ -29,4 +39,8 @@ function commit(){
 			}
 		});
 	});
+}
+function toMod(raw){
+	var mod = Math.floor((raw - 10 ) / 2);
+	return mod;
 }
