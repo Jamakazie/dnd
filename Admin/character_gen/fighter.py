@@ -6,13 +6,12 @@ from Admin import models
 import json
 
 class Fighter(Character):
-	def __init__(self, level, race, cclass, name='no name'):
+	def __init__(self, level, race, name='no name'):
 		Character.__init__(self,level, race, name)
-		self.cclass = cclass
+		self.cclass = "Fighter"
 		self.stats()
 		self.base_attack_bonus(1.0)
 		self.base_saves()
-		self.alignment()
 		self.equipment()
 		self.skills()
 	
@@ -24,25 +23,15 @@ class Fighter(Character):
 		wisdom = randrange(7,14)
 		intelligence = randrange(9,16)
 		charisma = randrange (9,16)
-		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma)
+		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma, self.race)
 		self.stats = statvalues
 
 	def base_saves(self):
 		saves = {}
 		saves['fort'] = 2 + self.level / 2
-		saves['reflex'] = self.level / 4
-		saves['will'] = self.level / 4
+		saves['reflex'] = self.level / 3
+		saves['will'] = self.level / 3
 		self.saves = saves
-
-	def alignment(self):
-		lc = ['lawful', 'neutral', 'chaotic']
-		ge = ['good', 'neutral', 'evil']
-		ln = ['loyal', 'self', 'disloyal']
-		alignment = []
-		alignment.append(choice(lc))
-		alignment.append(choice(ge))
-		alignment.append(choice(ln))
-		self.alignment = alignment
 	
 	def equipment(self):
 		equipments = []
@@ -72,6 +61,7 @@ class Fighter(Character):
 		cclass = self.cclass
 		c = models.character(stats=stats, skills=skills, saves=saves, attack_bonus=attack_bonus, items=items, alignment=alignment, race=race, name=name, gold=gold, level=level, cclass=cclass)
 		c.save()
+		
 	def jsonify(self):
 		return { 'Fighter':{
 				'stats': self.stats.__dict__,

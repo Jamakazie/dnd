@@ -5,32 +5,32 @@ from random import randrange, choice
 from Admin import models
 import json
 
-class Fighter(Character):
+class Priest(Character):
 	def __init__(self, level, race, name='no name'):
 		Character.__init__(self,level, race, name)
-		self.cclass = cclass
+		self.cclass = "Priest"
 		self.stats()
-		self.base_attack_bonus(1.0)
+		self.base_attack_bonus(.75)
 		self.base_saves()
 		self.equipment()
 		self.skills()
 	
 	def stats(self):
 		bonus = self.level  / 4 
-		strength = randrange(12,19) + bonus
+		strength = randrange(7,14) 
 		constitution = randrange(12,19)
-		dexterity = randrange(7,14)
-		wisdom = randrange(7,14)
-		intelligence = randrange(9,16)
+		dexterity = randrange(9,16)
+		wisdom = randrange(12,19) + bonus
+		intelligence = randrange(7,14)
 		charisma = randrange (9,16)
 		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma, self.race)
 		self.stats = statvalues
 
 	def base_saves(self):
 		saves = {}
-		saves['fort'] = 2 + self.level / 2
+		saves['fort'] = self.level / 3
 		saves['reflex'] = self.level / 3
-		saves['will'] = self.level / 3
+		saves['will'] = 2 + self.level / 2
 		self.saves = saves
 	
 	def equipment(self):
@@ -63,7 +63,7 @@ class Fighter(Character):
 		c.save()
 		
 	def jsonify(self):
-		return { 'Fighter':{
+		return { 'Cleric':{
 				'stats': self.stats.__dict__,
 				'skills': self.skills,
 				'saves': self.saves,

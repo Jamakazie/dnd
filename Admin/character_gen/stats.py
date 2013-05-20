@@ -1,11 +1,13 @@
 class Stats:
-	def __init__(self, strength,constitution, dexterity, wisdom, intelligence, charisma):
+	def __init__(self, strength,constitution, dexterity, wisdom, intelligence, charisma, race):
 		self.strength = strength
 		self.dexterity = dexterity
 		self.constitution = constitution
 		self.wisdom = wisdom
 		self.intelligence = intelligence
 		self.charisma = charisma
+		self.modStats(race)
+
 	def __str__(self):
 		return "Str:%s Dex: %s Con: %s Wis: %s Int: %s Cha: %s" % (self.strength, self.dexterity, self.constitution, self.wisdom, self.intelligence, self.charisma)
 
@@ -17,3 +19,5 @@ class Stats:
 		self.wisdom = fromdic['wisdom']
 		self.intelligence = fromdic['intelligence']
 		self.charisma = fromdic['charisma']
+	def modStats(self, race):
+		pass

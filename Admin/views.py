@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from Admin.models import character as c
 from Admin.ajax import render_block_to_string
-from Admin.character_gen import fighter, character
+from Admin.character_gen import fighter, character, priest, rogue, mage
 import json
 
 # Create your views here.
@@ -21,13 +21,21 @@ def admin_view(request):
 def admin_ajax_character(request):
 	name = request.GET['name']
 	level = request.GET['level']
+	race = request.GET['race']
 	cclass = request.GET['class']
-	response = name + level + cclass
-	fig = fighter.Fighter(level, 'Orc', cclass, name)
+	char = None
+	if (cclass == "Fighter"):
+		char = fighter.Fighter(level, race, name)
+	elif(cclass == "Rogue"):
+		char = rogue.Rogue(level, race, name)
+	elif(cclass == "Priest"):
+		char = priest.Priest(level, race, name)
+	elif(cclass == "Mage"):
+		char = mage.Mage(level, race, name)
 	context = {}
-	request.session['generated'] = fig
-	context['c'] = fig
-	statMods(fig.stats.__dict__, context)
+	request.session['generated'] = char 
+	context['c'] =char 
+	statMods(char.stats.__dict__, context)
 	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
 	return_str += render_block_to_string('char_ajax.html', 'commit', context)
 	return HttpResponse(return_str)

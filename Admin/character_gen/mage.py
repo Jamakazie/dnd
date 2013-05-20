@@ -5,32 +5,32 @@ from random import randrange, choice
 from Admin import models
 import json
 
-class Fighter(Character):
+class Mage(Character):
 	def __init__(self, level, race, name='no name'):
 		Character.__init__(self,level, race, name)
-		self.cclass = cclass
+		self.cclass = "Mage"
 		self.stats()
-		self.base_attack_bonus(1.0)
+		self.base_attack_bonus(.5)
 		self.base_saves()
 		self.equipment()
 		self.skills()
 	
 	def stats(self):
 		bonus = self.level  / 4 
-		strength = randrange(12,19) + bonus
+		strength = randrange(7,14) 
 		constitution = randrange(12,19)
 		dexterity = randrange(7,14)
-		wisdom = randrange(7,14)
-		intelligence = randrange(9,16)
+		wisdom = randrange(9,16)
+		intelligence = randrange(12,19) + bonus
 		charisma = randrange (9,16)
 		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma, self.race)
 		self.stats = statvalues
 
 	def base_saves(self):
 		saves = {}
-		saves['fort'] = 2 + self.level / 2
+		saves['fort'] = self.level / 3
 		saves['reflex'] = self.level / 3
-		saves['will'] = self.level / 3
+		saves['will'] = 2 + self.level / 2
 		self.saves = saves
 	
 	def equipment(self):

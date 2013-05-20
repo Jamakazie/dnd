@@ -7,7 +7,16 @@
 				<legend> Character Information </legend>
 				<input type="text" placeholder="Name" name="name" id="name" class="span2">
 				<input type="text" placeholder="Level" name="level" id="level" class="span1">
-				<select id="class" name="class" class="span1">
+				<select id="race" name="race" class="span1">
+					<option>Dwarf</option>
+					<option>Elf</option>
+					<option>Gnome</option>
+					<option>Half-Elf</option>
+					<option>Half-Orc</option>
+					<option>Halfling</option>
+					<option>Kobold</option>
+					<option>Orc</option>
+				<select id="class" name="class" class="span2">
 					<option>Fighter</option>
 					<option>Priest</option>
 					<option>Rogue</option>

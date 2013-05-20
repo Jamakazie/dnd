@@ -1,4 +1,5 @@
 from stats import Stats
+from random import choice
 import math
 class Character(object):
 	"""The Charater Creation Class"""
@@ -7,6 +8,7 @@ class Character(object):
 		self.level = int(level)
 		self.race = race 
 		self.name = name
+		self.alignment()
 		self.gold()
 
 	def gold(self):
@@ -22,7 +24,17 @@ class Character(object):
 			base -= 5
 			bab += "/+"  + str(int(base))
 		self.base_attack_bonus = bab
-	
+		
+	def alignment(self):
+		lc = ['lawful', 'neutral', 'chaotic']
+		ge = ['good', 'neutral', 'evil']
+		ln = ['loyal', 'self', 'disloyal']
+		alignment = []
+		alignment.append(choice(lc))
+		alignment.append(choice(ge))
+		alignment.append(choice(ln))
+		self.alignment = alignment
+		
 	def fromCharacterDB(self,dbitem):
 		self.stats = eval(dbitem.stats)#Stats.fromDict(dbitem.stats)
 		self.skills = eval(dbitem.skills)
