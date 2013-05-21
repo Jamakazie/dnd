@@ -1,0 +1,22 @@
+{% extends 'people_template.html' %}
+{% block main %}
+	<h1> Known Noteworthy People </h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Name</th>
+				<th>Race</th>
+			</tr>
+		<thead>
+		<tbody>
+			{% for person in people %}
+			<tr class="people_ajax_view" id={{person.pk}}>
+				<th>{{person.title}}</th>
+				<th>{{person.name}}</th>
+				<th>{{person.race}}</th>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}	
