@@ -1,6 +1,7 @@
 {% block charinfo %}
 	<div id="c_name"><span id='c_class'>{{c.cclass}}</span> <span id="c_race"> {{c.race}} </span> {{ c.name }} </div>
 	<div id="c_level">Level: {{ c.level}}</div>
+	<div id="c_hp">HP:  {{c.hp}} </div>
 	<div id="c_alignment">{{c.alignment.0}} {{c.alignment.1}} {{ c.alignment.2}} </div>
 	<div id="c_attack">Base Attack Bonus: {{c.base_attack_bonus}}</div>
 
@@ -14,9 +15,9 @@
 			<div id="stats_charisma" class="input-prepend input-append"><span class="add-on">Cha</span><span class="uneditable-input myspan">{{c.stats.charisma}}</span><span class="add-on">{{chaMod}}</span></div>
 		</div>
 		<div id="c_saves">
-			<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}} {{conMod}}</span></div>
-			<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}  {{dexMod}}</span></div>
-			<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}} {{wisMod}}</span></div>
+			<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}}{{conMod}}</span></div>
+			<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}{{dexMod}}</span></div>
+			<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}}{{wisMod}}</span></div>
 		</div>
 		<div id="c_skills">
 			{% for skill in c.skills %}

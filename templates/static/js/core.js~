@@ -1,33 +1,5 @@
 $(document).ready(function(){
-	$("#submit").click(function(){
-		$.ajax({
-			url:'/Admin/Ajax/Character',
-			type: 'get',
-			data: $('form').serialize(),
-			success: function(resp){
-				$('div#c_info').html(resp);
-				commit();
-			}
-		});
-		
-	});
-	$('.ajax_view').click(function(){
-		id = $(this).attr('id');
-		$.ajax({
-			url: '/Admin/Ajax/View/' + id,
-			type: 'get',
-			success: function(resp){
-				$('div#characters').html(resp);
-			}
-		});
-	});
-	$("#person_submit").click(function(){
-		alert($("create_person").serialize());
-	});
-	
-});
-function commit(){
-	$("#commit").click(function(){
+	$(document).on('click', '#commit', function(){
 		$.ajax({
 			url:'/Admin/Ajax/Commit',
 			type: 'get',
@@ -42,4 +14,71 @@ function commit(){
 			}
 		});
 	});
-}
+	$(document).on('click', '#submit', function(){
+		$.ajax({
+			url:'/Admin/Ajax/Character',
+			type: 'get',
+			data: $('form').serialize(),
+			success: function(resp){
+				$('div#c_info').html(resp);
+			}
+		});
+		
+	});
+	$(document).on('click', '.ajax_view', function(){
+		id = $(this).attr('id');
+		$.ajax({
+			url: '/Admin/Ajax/View/' + id,
+			type: 'get',
+			success: function(resp){
+				$('div#characters').html(resp);
+			}
+		});
+	});
+	$(document).on('click', '#person_submit', function(){
+		$.ajax({
+			url:'/Admin/Ajax/Person/NoSheet',
+			data : $("#create_person").serialize(),
+			type : 'post',
+			success: function(resp){
+				alert(resp)
+			}
+		});
+
+	});
+	$(document).on('click', '#person_submit_sheet', function(){
+		$.ajax({
+			url:'/Admin/Ajax/Person/Sheet',
+			data : $("#create_person").serialize(),
+			type : 'post',
+			success: function(resp){
+				alert(resp)
+			}
+		});
+
+	});
+
+	$(document).on('click', '#person_sheet', function(){
+		$.ajax({
+			url: '/Admin/Ajax/Sheet',
+			type: 'get',
+			success: function(resp){
+				$('#create_person_sheet').html(resp);
+				$("<style>").text("#commit { display:none; }").appendTo("head");
+				$("#person_submit").attr('id', 'person_submit_sheet');
+			}
+		});
+	});
+
+	$(document).on('click', '.ajax_people', function(){
+		id = $(this).attr('id');
+		$.ajax({
+			url: '/Admin/Ajax/Person/View/' + id,
+			type: 'get',
+			success: function(resp){
+				alert(resp);
+			}
+		});
+	});
+
+});

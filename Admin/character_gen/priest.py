@@ -10,6 +10,7 @@ class Priest(Character):
 		Character.__init__(self,level, race, name)
 		self.cclass = "Priest"
 		self.stats()
+		self.hp(8)
 		self.base_attack_bonus(.75)
 		self.base_saves()
 		self.equipment()

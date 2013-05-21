@@ -14,6 +14,7 @@ class character(models.Model):
 	gold = models.TextField()
 	level = models.TextField()
 	cclass = models.TextField()
+	hp = models.TextField()
 
 	
 class people(models.Model):
@@ -23,7 +24,7 @@ class people(models.Model):
 	race = models.CharField(max_length=50)
 	name = models.CharField(max_length =50)
 	title = models.CharField(max_length=50)
-	skill_sheet = models.ForeignKey(character)
+	skill_sheet = models.ForeignKey(character, null=True)
 
 class people_dm(models.Model):
 	p_id = models.ForeignKey(people)

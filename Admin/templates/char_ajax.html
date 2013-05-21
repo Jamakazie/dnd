@@ -1,6 +1,7 @@
 {% block charinfo %}
 	<div id="c_name"><span id='c_class'>{{c.cclass}}</span> <span id="c_race"> {{c.race}} </span> {{ c.name }} </div>
 	<div id="c_level">Level: {{ c.level}}</div>
+	<div id="c_hp">HP:  {{c.hp}} </div>
 	<div id="c_alignment">{{c.alignment.0}} {{c.alignment.1}} {{ c.alignment.2}} </div>
 	<div id="c_attack">Base Attack Bonus: {{c.base_attack_bonus}}</div>
 
@@ -53,5 +54,5 @@
 {% endblock %}
 
 {% block view %}
-	<a href="/Admin/View"><button class = 'btn' id='goback'>Go Back </button></a>
+	<a href="/Admin/View/Sheet"><button class = 'btn' id='goback'>Go Back </button></a>
 {% endblock %}

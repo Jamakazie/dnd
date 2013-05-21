@@ -8,7 +8,7 @@ import json
 class Fighter(Character):
 	def __init__(self, level, race, name='no name'):
 		Character.__init__(self,level, race, name)
-		self.cclass = cclass
+		self.cclass = "Fighter"
 		self.stats()
 		self.base_attack_bonus(1.0)
 		self.base_saves()

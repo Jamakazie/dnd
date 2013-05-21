@@ -1,5 +1,7 @@
+import json
+from Admin import models
 from stats import Stats
-from random import choice
+from random import choice, randint
 import math
 class Character(object):
 	"""The Charater Creation Class"""
@@ -34,7 +36,33 @@ class Character(object):
 		alignment.append(choice(ge))
 		alignment.append(choice(ln))
 		self.alignment = alignment
+								
+	def hp(self, mmax):
+		mod = math.floor((self.stats.constitution - 10) / 2)
+		total = mmax + mod
+		for i in range(1, self.level):
+			total += randint(1, mmax) + mod
+		self.hp = int(total)
+	
+	def commit(self):
+		self.charmod.save()
 		
+	def charmod(self):
+		stats = json.dumps(self.stats.__dict__)
+		skills = json.dumps(self.skills)
+		saves = json.dumps(self.saves)
+		attack_bonus = self.base_attack_bonus
+		items = self.items
+		alignment = self.alignment
+		race = self.race
+		hp = self.hp
+		name = self.name
+		gold = self.gold
+		level = self.level
+		cclass = self.cclass
+		self.charmod = models.character(hp=hp,stats=stats, skills=skills, saves=saves, attack_bonus=attack_bonus, items=items, alignment=alignment, race=race, name=name, gold=gold, level=level, cclass=cclass)
+		return self.charmod
+
 	def fromCharacterDB(self,dbitem):
 		self.stats = eval(dbitem.stats)#Stats.fromDict(dbitem.stats)
 		self.skills = eval(dbitem.skills)

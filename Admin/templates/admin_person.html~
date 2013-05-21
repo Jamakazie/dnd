@@ -1,10 +1,11 @@
 {% extends 'admin_template.html' %}
 {% block main%}
 	<h1> Create a Person</h1>
+	{% block person %}
 	<form id="create_person"> {% csrf_token %}
-		<input name="title" type="text" placeholder="Title" class="span2"/>
-		<input type="text" placeholder="Name" name="name" class="span2"/>
-		<select id="race" name="race" class="span2">
+		<input name="title" type="text" placeholder="Title" value ="{{person.title}}" class="span2" {{disabled}}/>
+		<input type="text" placeholder="Name" name="name" value= "{{person.name}}" class="span2"{{disabled}}/>
+		<select id="race" name="race" class="span2" value ="{{person.race}}" {{disabled}}>
 			<option>Dwarf</option>
 			<option>Elf</option>
 			<option>Gnome</option>
@@ -14,11 +15,24 @@
 			<option>Kobold</option>
 			<option>Orc</option>
 		</select>
+		<div id="p_bools">
+			<label class="checkbox inline">
+				<input type="checkbox" id="isknown" value="True" name="isknown" {{isknown}} {{disabled}}> isKnown?
+			</label>
+			<label class="checkbox inline">
+				<input type="checkbox" id="ismet" value="True" name="ismet" {{ismet}} {{disabled}}> isMet?
+			</label>
+		</div>
 		<div id="p_desc"><strong>Player Description:</strong></div>
-			<textarea rows="3" class="desc" name="desc"></textarea>
+		<textarea rows="3" class="desc" name="desc" {{disabled}}>{{person.description}}</textarea>
 		<div id="dm_desc"><strong>DM Description:</strong></div>
-			<textarea rows="3" class="desc" name="dm_desc"></textarea>
+		<textarea rows="3" class="desc" name="dm_desc" {{disabled}}>{{dm_desc}}</textarea>
 	</form>
-	<button class="btn" id="person_submit">Create A Character Sheet</button>
+	{% endblock %}
+	<button class="btn" id="person_sheet">Create A Character Sheet</button>
+	<div id="create_person_sheet"></div>
 	<button class="btn" id="person_submit">Create</button>
+{% endblock %}
+{% block goback %}
+<a href="/Admin/View/People"><button class="btn">Go Back</button></a>
 {% endblock %}

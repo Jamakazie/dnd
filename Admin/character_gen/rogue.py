@@ -11,6 +11,7 @@ class Rogue(Character):
 		self.cclass = "Rogue"
 		self.stats()
 		self.base_attack_bonus(.75)
+		self.hp(6)
 		self.base_saves()
 		self.equipment()
 		self.skills()
