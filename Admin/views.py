@@ -3,6 +3,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 from Admin.models import character as c, people as p, people_dm as pdm
+from Races.models import race as r, race_desc as rd
 from Admin.ajax import render_block_to_string
 from Admin.character_gen import fighter, character, priest, rogue, mage
 import json
@@ -86,6 +87,22 @@ def ajax_view(request, params):
 def admin_person(request):
 	context = {}
 	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))
+
+def admin_race(request):
+	context = {}
+	context['races'] = r.objects.all()
+	return render_to_response('admin_race.html', context, context_instance = RequestContext(request))
+
+def admin_race_edit(request, params):
+	context = {}
+	race = params.split('/')[0]
+	context['race_name'] = race
+	try:
+		context['race'] = r.objects.filter(race_name=race)[0].race_desc_set.all()[0]
+	except:
+		pass
+	return render_to_response('admin_race_edit.html', context, context_instance = RequestContext(request))
+
 
 def statMods(stats, context):
 	context['strMod'] = toMod(stats['strength'])

@@ -80,5 +80,15 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$(document).on('click', '.people_ajax_view', function(){
+		id = $(this).attr('id');
+		$.ajax({
+			url: '/People/Person/' + id,
+			type: 'get',
+			success: function(resp){
+				$('#people_view').html(resp)
+			}
+		});
+	});
 
 });

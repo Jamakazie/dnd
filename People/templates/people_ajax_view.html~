@@ -1,0 +1,8 @@
+{% block person %}
+ <h1>{{person.title}} {{person.name}} </h1>
+ <h3>Race: {{person.race}}</h3>
+ <h3>Description:</h3>
+ <p>{{person.description}}</p>
+
+{% endblock %}
+

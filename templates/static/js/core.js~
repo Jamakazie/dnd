@@ -76,7 +76,18 @@ $(document).ready(function(){
 			url: '/Admin/Ajax/Person/View/' + id,
 			type: 'get',
 			success: function(resp){
-				alert(resp);
+				$("#people").html(resp);
+			}
+		});
+	});
+	$(document).on('click', '.people_ajax_view', function(){
+		id = $(this).attr('id');
+		alert('pewpew');
+		$.ajax({
+			url: '/People/Person/' + id,
+			type: 'get',
+			success: function(resp){
+				$('#people_view').html(resp)
 			}
 		});
 	});

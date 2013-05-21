@@ -1,0 +1,11 @@
+{% extends 'admin_template.html' %}
+{% block main %}
+	<h2>Race to Edit/Add to:</h2>
+	<ul>
+		{% for race in races %}
+			<a href="/Admin/Race/{{race}}><li>{{race}}</li></a>
+		{% endfor %}
+	</ul>
+{% endblock %}
+	
+	

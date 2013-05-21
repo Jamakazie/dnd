@@ -1,0 +1,14 @@
+{% extends 'admin_template.html' %}
+{% block main %}
+	<h1> Editing:  {{race_name}} </h1>
+	<h2> Race Description:</h2>
+	<textarea id="race_desc">{{race.race_desc}}</textarea>
+	<h2> Race SRD:</h2>
+	<textarea id="race_srd">{{race.race_srd}}</textarea>
+	<h2> Race Stats: </h2>
+	<textarea id="race_stats">{{race.race_stats}}</textarea>
+	<h2>Race Skills:</h2>
+	<textarea id="race_skills">{{race.race_skills}}</textarea>
+	<h2>Race Misc:</h2>
+	<textarea id="race_misc">{{race.race_misc}}</textarea>
+{% endblock %}
