@@ -69,16 +69,17 @@ $(document).ready(function(){
 			}
 		});
 	});
-
 	$(document).on('click', '.ajax_people', function(){
 		id = $(this).attr('id');
-		$.ajax({
+		window.location= '/Admin/Ajax/Person/View/' + id;
+	/*	$.ajax({
 			url: '/Admin/Ajax/Person/View/' + id,
 			type: 'get',
 			success: function(resp){
 				$("#people").html(resp);
 			}
 		});
+		*/
 	});
 	$(document).on('click', '.people_ajax_view', function(){
 		id = $(this).attr('id');
@@ -100,6 +101,21 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$(document).on('click', '#person_edit', function(){
+		$('#create_person :input').prop('disabled', false);
+		$('#person_save').prop('disabled', false);
+	});
+	$(document).on('click', '#person_save', function(){
+		$.ajax({
+			url: '/Admin/Ajax/Person/Update/',
+			data: $('#create_person').serialize(),
+			type: 'post',
+			success: function(resp){
+				alert(resp);
+			}
+		});
+	});
+
 
 
 });

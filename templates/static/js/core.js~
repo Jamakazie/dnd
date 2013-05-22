@@ -69,7 +69,7 @@ $(document).ready(function(){
 			}
 		});
 	});
-
+/*
 	$(document).on('click', '.ajax_people', function(){
 		id = $(this).attr('id');
 		$.ajax({
@@ -80,6 +80,7 @@ $(document).ready(function(){
 			}
 		});
 	});
+	*/
 	$(document).on('click', '.people_ajax_view', function(){
 		id = $(this).attr('id');
 		$.ajax({
@@ -93,13 +94,28 @@ $(document).ready(function(){
 	$(document).on('click', '.race_update', function(){
 		$.ajax({
 			url: '/Admin/Ajax/Update/Race/',
-			data: $("#race_edit").serialize()
+			data: $("#race_edit").serialize(),
 			type: 'post',
 			success: function(resp){
 				alert(resp);
 			}
 		});
 	});
+	$(document).on('click', '#person_edit', function(){
+		$('#create_person :input').prop('disabled', false);
+		$('#person_save').prop('disabled', false);
+	});
+	$(document).on('click', '#person_save', function(){
+		$.ajax({
+			url: '/Admin/Ajax/Person/Update/',
+			data: $('#create_person').serialize(),
+			type: 'post',
+			success: function(resp){
+				alert(resp);
+			}
+		});
+	});
+
 
 
 });

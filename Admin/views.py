@@ -44,6 +44,39 @@ def admin_ajax_character(request):
 	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
 	return_str += render_block_to_string('char_ajax.html', 'commit', context)
 	return HttpResponse(return_str)
+def ajax_person_update(request):
+	pid = request.POST['pk']
+	title = request.POST['title']
+	race = request.POST['race']
+	name = request.POST['name']
+	if 'ismet' in request.POST:
+		isMet = True
+	else:
+		isMet = False
+	if 'isknown' in request.POST:
+		isKnown = True
+	else:
+		isKnown = False
+	desc = request.POST['desc']
+	dm_desc = request.POST['dm_desc']
+	person = p.objects.get(pk=pid)
+	person.isknown = isKnown
+	person.race = race
+	person.ismet = isMet
+	person.description = desc
+	person.name = name
+	person.title = title
+	person.save()
+	try:
+		p_dm = person.people_dm_set.all()[0]
+	except: 
+		p_dm = person.people_dm_set.create(dm_desc=dm_desc)
+	p_dm.save()
+	return HttpResponse("Success")
+
+
+
+
 def ajax_person_view(request, params):
 	pid = params.split('/')
 	pid = params[0]
@@ -60,9 +93,10 @@ def ajax_person_view(request, params):
 	except:
 		pass
 	context['disabled'] = 'disabled'
-	return_str = render_block_to_string('admin_person.html', 'person', context)
-	return_str += render_block_to_string('admin_person.html', 'view', context)
-	return HttpResponse(return_str)
+	#return_str = render_block_to_string('admin_person.html', 'person', context)
+	#return_str += render_block_to_string('admin_person.html', 'view', context)
+	#return HttpResponse(return_str)
+	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))
 
 def commit(request):
 	character = request.session['generated']

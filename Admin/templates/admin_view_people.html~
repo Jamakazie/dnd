@@ -1,0 +1,29 @@
+{% extends 'admin_template.html' %}
+{% block main %}
+	<div id="people">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Name</th>
+					<th>Race</th>
+					<th>Is Known?</th>
+					<th>Is Met?</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for p in people %}
+					<a href="/Admin/View/People/{{p.pk}}">
+					<tr class="ajax_people" id="{{p.pk}}">
+						<th>{{p.title}}</th>
+						<th>{{p.name}}</th>
+						<th>{{p.race}}</th>
+						<th>{{p.isknown}}</th>
+						<th>{{p.ismet}}</th>
+					</tr>
+				</a>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
