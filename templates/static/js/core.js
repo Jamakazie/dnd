@@ -90,5 +90,16 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$(document).on('click', '.race_update', function(){
+		$.ajax({
+			url: '/Admin/Ajax/Update/Race/',
+			data: $("#race_edit").serialize(),
+			type: 'post',
+			success: function(resp){
+				alert(resp);
+			}
+		});
+	});
+
 
 });

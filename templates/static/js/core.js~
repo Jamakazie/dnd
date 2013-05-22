@@ -82,7 +82,6 @@ $(document).ready(function(){
 	});
 	$(document).on('click', '.people_ajax_view', function(){
 		id = $(this).attr('id');
-		alert('pewpew');
 		$.ajax({
 			url: '/People/Person/' + id,
 			type: 'get',
@@ -91,5 +90,16 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$(document).on('click', '.race_update', function(){
+		$.ajax({
+			url: '/Admin/Ajax/Update/Race/',
+			data: $("#race_edit").serialize()
+			type: 'post',
+			success: function(resp){
+				alert(resp);
+			}
+		});
+	});
+
 
 });

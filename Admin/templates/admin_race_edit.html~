@@ -1,14 +1,19 @@
 {% extends 'admin_template.html' %}
 {% block main %}
 	<h1> Editing:  {{race_name}} </h1>
-	<h2> Race Description:</h2>
-	<textarea id="race_desc">{{race.race_desc}}</textarea>
-	<h2> Race SRD:</h2>
-	<textarea id="race_srd">{{race.race_srd}}</textarea>
-	<h2> Race Stats: </h2>
-	<textarea id="race_stats">{{race.race_stats}}</textarea>
-	<h2>Race Skills:</h2>
-	<textarea id="race_skills">{{race.race_skills}}</textarea>
-	<h2>Race Misc:</h2>
-	<textarea id="race_misc">{{race.race_misc}}</textarea>
+	<button id="{{race_name}}" class="btn race_update">Update</button>
+	<form id="race_edit"> {% csrf_token %}
+		<h2> Race Description:</h2>
+		<textarea id="race_desc" name="race_desc" class="race_desc" rows="15">{{race.race_desc}}</textarea>
+		<h2> Race SRD:</h2>
+		<textarea id="race_srd" name="race_src" class="race_desc" rows="10">{{race.race_srd}}</textarea>
+		<h2> Race Stats: </h2>
+		<textarea id="race_stats" name="race_stats" class="race_desc" rows="7">{{race.race_stats}}</textarea>
+		<h2>Race Skills:</h2>
+		<textarea id="race_skills" name ="race_skills" class="race_desc" rows="7">{{race.race_skills}}</textarea>
+		<h2>Race Misc:</h2>
+		<textarea id="race_misc" name="race_misc" class="race_desc" rows="7">{{race.race_misc}}</textarea>
+		<input type="hidden" name="race" value="{{race_name}}" />
+	</form>
+	<button id="{{race_name}}" class="btn race_update">Update</button>
 {% endblock %}

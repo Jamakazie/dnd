@@ -84,6 +84,29 @@ def ajax_view(request, params):
 	return_str += render_block_to_string('char_ajax.html', 'view', context)
 	return HttpResponse(return_str)
 
+def ajax_update_race(request):
+#	try:
+	race = request.POST['race']
+	race_desc = request.POST['race_desc']
+	race_srd = request.POST['race_srd']
+	race_stats = request.POST['race_stats']
+	race_skills = request.POST['race_skills']
+	race_misc = request.POST['race_misc']
+	try:
+		r_id = r.objects.filter(race_name=race)[0].race_desc_set.all()[0]
+		r_id.race_desc = race_desc
+		r_id.race_stats = race_stats
+		r_id.race_srd = race_srd
+		r_id.race_skils = race_skills
+		r_id.race_misc = race_misc
+	except:
+		r_id = r.objects.filter(race_name=race)[0].race_desc_set.create(race_desc=race_desc, race_srd=race_srd, race_stats=race_stats, race_skills=race_skills, race_misc=race_misc)
+
+	r_id.save()
+	return HttpResponse("Success")
+#	except:
+#		return HttpResponse("Failure")
+
 def admin_person(request):
 	context = {}
 	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))

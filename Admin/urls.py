@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 	url(r'^Ajax/View/(.*)', views.ajax_view, name='ajax_view'),
 	url(r'^Ajax/Person/View/(.*)', views.ajax_person_view, name='ajax_person_view'),
 	url(r'^Ajax/Sheet', views.ajax_create_sheet, name='ajax_create_sheet'),
+	url(r'^Ajax/Update/Race/$', views.ajax_update_race, name='ajax_update_race'),
 	url(r'^Ajax/Person/NoSheet', views.ajax_person_nosheet, name='ajax_person_nosheet'),
 	url(r'^Ajax/Person/Sheet', views.ajax_person_sheet, name='ajax_person_sheet'),
 )
