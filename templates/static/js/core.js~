@@ -111,12 +111,7 @@ $(document).ready(function(){
 			data: $('#create_person').serialize(),
 			type: 'post',
 			success: function(resp){
-				if(resp=="Success"){
-					window.location = "/Admin/";
-				}
-				else{
-					alert("Incorrect Username/Password");
-				}
+				alert(resp);
 			}
 		});
 	});
@@ -127,7 +122,12 @@ $(document).ready(function(){
 			data : $('#login').serialize(),
 			type: 'post',
 			success: function(resp){
-				alert(resp);
+				if(resp == "Success"){
+					window.location = "/Admin/";
+				}
+				else{
+					alert("Incorrect Username/Password");
+				}
 			}
 		});
 	});

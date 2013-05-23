@@ -33,12 +33,14 @@
 		{% endif %}
 	</form>
 	{% endblock %}
+	{% if not disabled %}
 	<button class="btn" id="person_sheet">Create A Character Sheet</button>
 	<div id="create_person_sheet"></div>
 	<button class="btn" id="person_submit">Create</button>
-{% endblock %}
-{% block view %}
-<button class="btn" id="person_edit">Edit</button>
-<button class="btn" id="person_save" disabled>Save Changes</button>
-<a href="/Admin/View/People"><button class="btn">Go Back</button></a>
+	{% endif %}
+	{% if disabled %}
+	<button class="btn" id="person_edit">Edit</button>
+	<button class="btn" id="person_save" disabled>Save Changes</button>
+	<a href="/Admin/View/People"><button class="btn">Go Back</button></a>
+	{% endif %}
 {% endblock %}

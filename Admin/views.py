@@ -234,6 +234,16 @@ def ajax_person_sheet(request):
 	request.session['generated'] = None
 	return HttpResponse("Success")
 
+@login_required
+def ajax_person_delete(request, params):
+	p_id = params.split('/')[0]
+	try:
+		person = p.objects.get(pk=p_id)
+		person.delete()
+		return HttpResponse("Success")
+	except:
+		return HttpResponse("There was an error ;-;")
+
 def toMod(stat):
 	mod = math.floor((stat - 10) / 2)
 	if( mod >= 0):

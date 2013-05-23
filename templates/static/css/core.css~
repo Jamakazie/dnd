@@ -15,5 +15,10 @@ tr.ajax_view{
 	width: 75%;
 }
 .race_desc{
-	width: 100%;
+	width: 90%;
+}
+
+.people_ajax_view{
+	cursor: hand;
+	cursor: pointer;
 }

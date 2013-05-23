@@ -104,6 +104,7 @@ $(document).ready(function(){
 	$(document).on('click', '#person_edit', function(){
 		$('#create_person :input').prop('disabled', false);
 		$('#person_save').prop('disabled', false);
+		$('#pre_person_delete').prop('disabled', false);
 	});
 	$(document).on('click', '#person_save', function(){
 		$.ajax({

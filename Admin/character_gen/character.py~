@@ -61,6 +61,7 @@ class Character(object):
 		level = self.level
 		cclass = self.cclass
 		self.charmod = models.character(hp=hp,stats=stats, skills=skills, saves=saves, attack_bonus=attack_bonus, items=items, alignment=alignment, race=race, name=name, gold=gold, level=level, cclass=cclass)
+		return self.charmod
 
 	def fromCharacterDB(self,dbitem):
 		self.stats = eval(dbitem.stats)#Stats.fromDict(dbitem.stats)

@@ -183,10 +183,13 @@ def statMods(stats, context):
 	context['intMod'] = toMod(stats['intelligence'])
 	context['chaMod'] = toMod(stats['charisma'])
 
+@login_required
 def ajax_create_sheet(request):
 	context = {}
 	return_str = render_block_to_string('admin_create.html', 'sheet', context)
 	return HttpResponse(return_str)
+
+@login_required
 def ajax_person_nosheet(request):
 	title = request.POST['title']
 	name = request.POST['name']
@@ -207,6 +210,7 @@ def ajax_person_nosheet(request):
 	person_dm.save()
 	return HttpResponse("Success")
 
+@login_required
 def ajax_person_sheet(request):
 	title = request.POST['title']
 	name = request.POST['name']
@@ -229,6 +233,7 @@ def ajax_person_sheet(request):
 	person_dm.save()
 	request.session['generated'] = None
 	return HttpResponse("Success")
+
 def toMod(stat):
 	mod = math.floor((stat - 10) / 2)
 	if( mod >= 0):

@@ -5,7 +5,7 @@ from random import choice, randint
 import math
 class Character(object):
 	"""The Charater Creation Class"""
-	gold_values = [100, 300, 900, 2700]
+	gold_values = [100, 300, 900, 2700, 6000]
 	def __init__(self, level, race, name="No name"):
 		self.level = int(level)
 		self.race = race 

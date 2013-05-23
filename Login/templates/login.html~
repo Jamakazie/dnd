@@ -1,6 +1,7 @@
 {% extends 'template.html' %}
 {% block main %}
 <form id='login' class="form-horizontal">
+	{% csrf_token %}
 	<fieldset>
 		<legend>Login</legend>
 		<div class="control-group">
@@ -15,7 +16,7 @@
 				<input type="password" id="passwowrd" name="password" />
 			</div>
 		</div>
+		<button class="btn" id="login_submit">Submit</button>
 	</fieldset>
 </form>
-<button class="btn" id="login_submit">Submit</button>
 {% endblock%}
