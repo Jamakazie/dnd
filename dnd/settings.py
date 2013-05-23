@@ -31,6 +31,7 @@ TEMPLATE_DIRS = (
 	BASE_DIR + '/History',
 	BASE_DIR + '/Admin/templates',
 	BASE_DIR + '/People/templates',
+	BASE_DIR + '/Login/templates',
 )
 
 ALLOWED_HOSTS = []
@@ -49,6 +50,7 @@ INSTALLED_APPS = (
     'Races',
     'History',
     'Admin',
+    'Login',
 )
 
 STATIC_ROOT = BASE_DIR + '/static/'
@@ -58,6 +60,7 @@ STATICFILES_DIRS = (
 	BASE_DIR + '/main/static/',
 	BASE_DIR + '/Races/static',
 	BASE_DIR + '/History/static/',
+	BASE_DIR + '/Login/static',
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,3 +104,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/Login/'

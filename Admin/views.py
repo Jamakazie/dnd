@@ -1,4 +1,5 @@
 import math
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -9,20 +10,25 @@ from Admin.character_gen import fighter, character, priest, rogue, mage
 import json
 
 # Create your views here.
+@login_required
 def admin_index(request):
 	context = {}
 	return render_to_response('admin_index.html', context, context_instance = RequestContext(request))
+@login_required
 def admin_create(request):
 	context = {}
 	return render_to_response('admin_create.html', context, context_instance=RequestContext(request))
+@login_required
 def admin_view(request):
 	context = {}
 	context['characters'] = c.objects.all()
 	return render_to_response('admin_view.html', context, context_instance = RequestContext(request))
+@login_required
 def admin_view_people(request):
 	context = {}
 	context['people'] = p.objects.all()
 	return render_to_response('admin_view_people.html', context, context_instance = RequestContext(request))
+@login_required
 def admin_ajax_character(request):
 	name = request.GET['name']
 	level = request.GET['level']
@@ -44,6 +50,7 @@ def admin_ajax_character(request):
 	return_str = render_block_to_string('char_ajax.html', 'charinfo', context)
 	return_str += render_block_to_string('char_ajax.html', 'commit', context)
 	return HttpResponse(return_str)
+@login_required
 def ajax_person_update(request):
 	pid = request.POST['pk']
 	title = request.POST['title']
@@ -77,6 +84,7 @@ def ajax_person_update(request):
 
 
 
+@login_required
 def ajax_person_view(request, params):
 	pid = params.split('/')
 	pid = params[0]
@@ -98,6 +106,7 @@ def ajax_person_view(request, params):
 	#return HttpResponse(return_str)
 	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))
 
+@login_required
 def commit(request):
 	character = request.session['generated']
 	character.charmod()
@@ -105,6 +114,7 @@ def commit(request):
 	request.session['generated'] = None
 	return HttpResponse("success")
 
+@login_required
 def ajax_view(request, params):
 	context = {}
 	param = params.split('/')
@@ -118,6 +128,7 @@ def ajax_view(request, params):
 	return_str += render_block_to_string('char_ajax.html', 'view', context)
 	return HttpResponse(return_str)
 
+@login_required
 def ajax_update_race(request):
 #	try:
 	race = request.POST['race']
@@ -141,15 +152,18 @@ def ajax_update_race(request):
 #	except:
 #		return HttpResponse("Failure")
 
+@login_required
 def admin_person(request):
 	context = {}
 	return render_to_response('admin_person.html', context, context_instance = RequestContext(request))
 
+@login_required
 def admin_race(request):
 	context = {}
 	context['races'] = r.objects.all()
 	return render_to_response('admin_race.html', context, context_instance = RequestContext(request))
 
+@login_required
 def admin_race_edit(request, params):
 	context = {}
 	race = params.split('/')[0]
@@ -169,10 +183,13 @@ def statMods(stats, context):
 	context['intMod'] = toMod(stats['intelligence'])
 	context['chaMod'] = toMod(stats['charisma'])
 
+@login_required
 def ajax_create_sheet(request):
 	context = {}
 	return_str = render_block_to_string('admin_create.html', 'sheet', context)
 	return HttpResponse(return_str)
+
+@login_required
 def ajax_person_nosheet(request):
 	title = request.POST['title']
 	name = request.POST['name']
@@ -193,6 +210,7 @@ def ajax_person_nosheet(request):
 	person_dm.save()
 	return HttpResponse("Success")
 
+@login_required
 def ajax_person_sheet(request):
 	title = request.POST['title']
 	name = request.POST['name']
@@ -215,6 +233,7 @@ def ajax_person_sheet(request):
 	person_dm.save()
 	request.session['generated'] = None
 	return HttpResponse("Success")
+
 def toMod(stat):
 	mod = math.floor((stat - 10) / 2)
 	if( mod >= 0):

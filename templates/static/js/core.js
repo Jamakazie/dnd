@@ -116,6 +116,22 @@ $(document).ready(function(){
 		});
 	});
 
+	$(document).on('click', '#login_submit', function(){
+		$.ajax({
+			url: '/Login/Auth/',
+			data : $('#login').serialize(),
+			type: 'post',
+			success: function(resp){
+				if(resp == "Success"){
+					window.location = "/Admin/";
+				}
+				else{
+					alert("Incorrect Username/Password");
+				}
+			}
+		});
+	});
+
 
 
 });
