@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^History/', include('History.urls')),
     url(r'^Admin/', include('Admin.urls')),
     url(r'^People/', include('People.urls')),
+    url(r'^Login/', include('Login.urls')),
 )
+W
