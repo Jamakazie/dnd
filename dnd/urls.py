@@ -16,4 +16,3 @@ urlpatterns = patterns('',
     url(r'^People/', include('People.urls')),
     url(r'^Login/', include('Login.urls')),
 )
-W
