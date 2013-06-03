@@ -1,0 +1,29 @@
+div#navbar-sub{
+	margin-top: -20px !important;
+}
+div.left{
+	margin-left: 20px;
+}
+tr.ajax_view{
+	cursor: hand;
+	cursor: pointer;
+}
+.myspan{
+	width: 20px;
+}
+.desc{
+	width: 75%;
+}
+.race_desc{
+	width: 90%;
+}
+
+.people_ajax_view{
+	cursor: hand;
+	cursor: pointer;
+}
+
+.ajax_people{
+	cursor: hand;
+	cursor: pointer;
+}
