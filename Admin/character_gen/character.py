@@ -14,7 +14,7 @@ class Character(object):
 		self.gold()
 
 	def gold(self):
-		if self.level <= len(self.gold_values):
+		if self.level <= len(self.gold_values) -1:
 			self.gold = self.gold_values[self.level]
 		else:
 			self.gold = self.level * 300

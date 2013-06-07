@@ -20,4 +20,30 @@ class Stats:
 		self.intelligence = fromdic['intelligence']
 		self.charisma = fromdic['charisma']
 	def modStats(self, race):
+		if race == "Orc":
+			self.strength += 4
+			self.intelligence -= 2
+			self.wisdom -= 2
+			self.charisma -= 2
+		elif race == "Dwarf":
+			self.constitution += 2
+			self.wisdom += 2
+			self.charisma -= 2
+		elif race == "Elf":
+			self.dexterity += 2
+			self.intelligence += 2
+			self.constitution -= 2
+		elif race == "Gnome":
+			self.constitution += 2
+			self.charisma += 2
+			self.strength -= 2
+		elif race == "Halfling":
+			self.dexterity += 2
+			self.charisma += 2
+			self.strength -= 2
+		elif race == "Kobold":
+			self.strength -= 4
+			self.constitution -= 2
+			self.dexterity += 2
+		
 		pass

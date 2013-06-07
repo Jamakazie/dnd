@@ -23,6 +23,8 @@ class Mage(Character):
 		dexterity = randrange(7,14)
 		wisdom = randrange(9,16)
 		intelligence = randrange(12,19) + bonus
+		if intelligence < 14:
+			intelligence = randrange(12,19) + bonus
 		charisma = randrange (9,16)
 		statvalues = Stats(strength, constitution, dexterity, wisdom, intelligence, charisma, self.race)
 		self.stats = statvalues

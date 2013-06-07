@@ -10,6 +10,7 @@ class Mage(Character):
 		Character.__init__(self,level, race, name)
 		self.cclass = "Mage"
 		self.stats()
+		self.hp(4)
 		self.base_attack_bonus(.5)
 		self.base_saves()
 		self.equipment()
