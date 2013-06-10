@@ -245,20 +245,41 @@ def ajax_person_delete(request, params):
 		return HttpResponse("There was an error ;-;")
 @login_required
 def ajax_encounter(request):
-	level = 10
-	race = "Human"
-	name = "test dude"
-	char = fighter.Fighter(level, race, name)
-	context = {}
-	context['person'] = char
-	statMods(char.stats.__dict__, context)
-	render_str = render_block_to_str('ajax_enc_char.html', 'encounter', context)
+	plevel = request.POST.getlist('level')
+	prace = request.POST.getlist('race')
+	pname = request.POST.getlist('name')
+	pclass = request.POST.getlist('class')
+	render_str = ''
+	for index, lev in enumerate(plevel):
+		name = pname[index] 
+		level = plevel[index]
+		race = prace[index]
+		cclass = pclass[index]
+		char = None
+		if (cclass == "Fighter"):
+			char = fighter.Fighter(level, race, name)
+		elif(cclass == "Rogue"):
+			char = rogue.Rogue(level, race, name)
+		elif(cclass == "Priest"):
+			char = priest.Priest(level, race, name)
+		elif(cclass == "Mage"):
+			char = mage.Mage(level, race, name)
+		context = {}
+		context['person'] = char
+		statMods(char.stats.__dict__, context)
+		render_str += render_block_to_string('ajax_enc_char.html', 'encounter', context)
 	return HttpResponse(render_str)
 
 @login_required
 def admin_create_encounter(request):
 	context = {}
 	return render_to_response("admin_create_encounter.html", context, context_instance = RequestContext(request))
+@login_required
+def ajax_admin_create_encounter(request):
+	context = {}
+	return_str = render_block_to_string('admin_create_encounter.html', 'character', context)
+	return HttpResponse(return_str)
+
 def toMod(stat):
 	mod = math.floor((stat - 10) / 2)
 	if( mod >= 0):

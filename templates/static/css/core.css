@@ -31,9 +31,14 @@ tr.ajax_view{
 	width: 333px;
 	border: 1px solid;
 	text-align: center;
+	float: left;
 }
 .sub-encounter{
 	margin: 0px auto;
 	display: inline-block;
 	vertical-align: middle;
+}
+
+#placeholder{
+	width: 1010px;
 }
