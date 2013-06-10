@@ -155,4 +155,12 @@ $(document).ready(function(){
 		});
 	});
 
+	$(document).on('click', '#init', function(){
+		$('.init').each(function(){
+				rng = Math.floor(Math.random() * (21))
+				base = parseInt($(this).html());
+				$(this).parent().find('.initiative').html(rng+base);
+		});
+	});
+
 });
