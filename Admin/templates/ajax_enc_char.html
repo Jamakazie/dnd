@@ -1,33 +1,34 @@
 {% block encounter %}
 <div class="encounter">
-	<div class="first">
+	<div class="first sub-encounter">
 		<span class="name">{{person.name}}</span>
 		<span class="race">{{person.race}}</span>
 		<span class="class">{{person.cclass}}</span>
 		<span class="level">{{person.level}}</span>
 	</div>
-	<div class="second">
-		<span class="hp">{{person.hp}}</span>
-		<span class="ac">{{person.ac}}</span>
-		<span class="alignment">{{person.alignment}}</span>
+	<div class="second sub-encounter">
+		<div class="hp input-prepend"><span class="add-on">HP</span><span class="hp uneditable-input myspan">{{person.hp}}</span></div>
+		<div class="input-prepend"><span class="add-on">AC</span><span class="ac myspan uneditable-input">{{person.ac}}</span></div>
+		<div class="input-prepend"><span class="add-on">Alignment</span><span class="alignment uneditable-input span1">{{person.alignment.0.0}} - {{person.alignment.1.0}} - {{person.alignment.2.0}}</span>
 	</div>
-	<div class="third">
+	<div class="third sub-encounter">
 		<div id="stats_strength" class="input-prepend input-append"><span class="add-on">Str</span><span class="uneditable-input myspan">{{person.stats.strength}}</span><span class='add-on'>{{strMod}}</span></div>
 		<div id="stats_dexterity" class="input-prepend input-append"><span class="add-on">Dex</span><span class="uneditable-input myspan">{{person.stats.dexterity}}</span><span class="add-on">{{dexMod}}</span></div>
 		<div id="stats_constitution" class="input-prepend input-append"><span class="add-on">Con</span><span class="uneditable-input myspan">{{person.stats.constitution}}</span><span class="add-on">{{conMod}}</span></div>
 	</div>
-	<div class="fourth">
+	<div class="fourth sub-encounter">
 		<div id="stats_wisdom" class="input-prepend input-append"><span class="add-on">Wis</span><span class="uneditable-input myspan">{{person.stats.wisdom}}</span><span class="add-on">{{wisMod}}</span></div>
 		<div id="stats_intelliegence" class="input-prepend input-append"><span class="add-on">Int</span><span class="uneditable-input myspan">{{person.stats.intelligence}}</span><span class="add-on">{{intMod}}</span></div>
 		<div id="stats_charisma" class="input-prepend input-append"><span class="add-on">Cha</span><span class="uneditable-input myspan">{{person.stats.charisma}}</span><span class="add-on">{{chaMod}}</span></div>
 	</div>
-	<div class="fifth">
+	<div class="fifth sub-encounter">
+		<div class="bab input-prepend"><span class="add-on">BAB</span><span class="bab uneditable-input span1">{{person.base_attack_bonus}}</span></div>
 		<div class="to-hit input-prepend"><span class="add-on">To Hit</span><span class="tohit uneditable-input myspan">{{person.totaltohit}}</span></div>
 		<div class="init input-prepend input-append"><span class="add-on">Init</span><span class="uneditable-input myspan init">{{dexMod}}</span><<span class="add-on initiative"></span></div>
 	</div>
-	<div class="sixth">
-		<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{c.saves.fort}}{{conMod}}</span></div>
-		<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{c.saves.reflex}}{{dexMod}}</span></div>
-		<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{c.saves.will}}{{wisMod}}</span></div>
+	<div class="sixth sub-encounter">
+		<div id="c_fort" class="input-prepend"><span class="add-on">Fort</span><span class="uneditable-input span1">{{person.saves.fort}}{{conMod}}</span></div>
+		<div id="c_reflex" class="input-prepend"><span class="add-on">Reflex</span><span class="uneditable-input span1">{{person.saves.reflex}}{{dexMod}}</span></div>
+		<div id="c_will" class="input-prepend"><span class="add-on">Will</span><span class="uneditable-input span1">{{person.saves.will}}{{wisMod}}</span></div>
 	</div>
 {% endblock %}

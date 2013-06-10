@@ -22,3 +22,17 @@ tr.ajax_view{
 	cursor: hand;
 	cursor: pointer;
 }
+
+.ajax_people{
+	cursor: hand;
+	cursor: pointer;
+}
+.encounter{
+	width: 333px;
+	border: 1px solid;
+}
+.sub-encounter{
+	margin: 0px auto;
+	display: block;
+	vertical-align: middle;
+}
