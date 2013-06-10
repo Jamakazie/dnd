@@ -6,16 +6,16 @@
 		{% csrf_token %}
 		<input name="title" type="text" placeholder="Title" value ="{{person.title}}" class="span2" {{disabled}}/>
 		<input type="text" placeholder="Name" name="name" value= "{{person.name}}" class="span2"{{disabled}}/>
-		<select id="race" name="race" class="span2" value ="{{person.race}}" {{disabled}}>
-			<option>Dwarf</option>
-			<option>Elf</option>
-			<option>Gnome</option>
-			<option>Half-Elf</option>
-			<option>Half-Orc</option>
-			<option>Halfling</option>
-			<option>Human</option>
-			<option>Kobold</option>
-			<option>Orc</option>
+		<select id="race" name="race" class="span2" {{disabled}}>
+			<option {% if person.race == "Dwarf"%} selected {% endif %}>Dwarf</option>
+			<option {% if person.race == "Elf" %} selected {% endif %}>Elf</option>
+			<option {% if person.race == "Gnome" %}selected{% endif %}>Gnome</option>
+			<option {% if person.race == "Half-Elf" %}selected{% endif %}>Half-Elf</option>
+			<option {% if person.radce == "Half-Orc" %}selected{% endif %}>Half-Orc</option>
+			<option {% if person.race == "Halfling" %}selected {% endif %}>Halfling</option>
+			<option {% if person.race == "Human" %}selected{% endif %}>Human</option>
+			<option {% if person.race == "Kobold" %}selected{% endif%}>Kobold</option>
+			<option {% if person.race == "Orc" %}selected{% endif %}>Orc</option>
 		</select>
 		<div id="p_bools">
 			<label class="checkbox inline">

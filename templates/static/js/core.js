@@ -133,6 +133,16 @@ $(document).ready(function(){
 		});
 	});
 
-
+	$(document).on('click', '#generate_encounter', function(){
+		data = $("#encoutner").serialize();
+		$.ajax({
+			url: '/Admin/Create/Encounter/Generate',
+			data: data, 
+			type: 'post', 
+			success: function(resp){
+				$('#placeholder').html(resp);
+			}
+		});
+	});
 
 });

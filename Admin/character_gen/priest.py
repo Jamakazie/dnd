@@ -15,6 +15,7 @@ class Priest(Character):
 		self.base_saves()
 		self.equipment()
 		self.skills()
+		self.totaltohit = int(max(self.stats.strength, self.stats.dexterity)) + int(self.base_attack_bonus)
 	
 	def stats(self):
 		bonus = self.level  / 4 

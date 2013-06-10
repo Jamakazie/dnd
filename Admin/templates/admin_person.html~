@@ -6,13 +6,14 @@
 		{% csrf_token %}
 		<input name="title" type="text" placeholder="Title" value ="{{person.title}}" class="span2" {{disabled}}/>
 		<input type="text" placeholder="Name" name="name" value= "{{person.name}}" class="span2"{{disabled}}/>
-		<select id="race" name="race" class="span2" value ="{{person.race}}" {{disabled}}>
-			<option>Dwarf</option>
+		<select id="race" name="race" class="span2" selected="{{person.race}}" {{disabled}}>
+			<option {% if person.race == "Dwarf"%} selected {% endif %}>Dwarf</option>
 			<option>Elf</option>
 			<option>Gnome</option>
 			<option>Half-Elf</option>
 			<option>Half-Orc</option>
 			<option>Halfling</option>
+			<option {% if person.race == "Human"%}selected{% endif %}>Human</option>
 			<option>Kobold</option>
 			<option>Orc</option>
 		</select>

@@ -243,7 +243,22 @@ def ajax_person_delete(request, params):
 		return HttpResponse("Success")
 	except:
 		return HttpResponse("There was an error ;-;")
+@login_required
+def ajax_encounter(request):
+	level = 10
+	race = "Human"
+	name = "test dude"
+	char = fighter.Fighter(level, race, name)
+	context = {}
+	context['person'] = char
+	statMods(char.stats.__dict__, context)
+	render_str = render_block_to_string('ajax_enc_char.html', 'encounter', context)
+	return HttpResponse(render_str)
 
+@login_required
+def admin_create_encounter(request):
+	context = {}
+	return render_to_response("admin_create_encounter.html", context, context_instance = RequestContext(request))
 def toMod(stat):
 	mod = math.floor((stat - 10) / 2)
 	if( mod >= 0):

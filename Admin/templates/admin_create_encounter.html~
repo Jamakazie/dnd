@@ -1,0 +1,6 @@
+{% extends 'admin_template.html' %}
+{% block main %}
+<h2>Create An Encounter</h2>
+<div id="placeholder"></div>
+<div id="generate_encounter" class="btn">Generate</div>
+{% endblock %}

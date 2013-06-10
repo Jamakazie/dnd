@@ -15,6 +15,7 @@ class Fighter(Character):
 		self.base_saves()
 		self.equipment()
 		self.skills()
+		self.totaltohit = int(1.0 * level) + int((self.stats.strength - 10) / 2)
 	
 	def stats(self):
 		bonus = self.level  / 4 

@@ -15,6 +15,7 @@ class Mage(Character):
 		self.base_saves()
 		self.equipment()
 		self.skills()
+		self.totaltohit = self.base_attack_bonus
 	
 	def stats(self):
 		bonus = self.level  / 4 

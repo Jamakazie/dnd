@@ -10,10 +10,12 @@ class Fighter(Character):
 		Character.__init__(self,level, race, name)
 		self.cclass = "Fighter"
 		self.stats()
+		self.hp(10)
 		self.base_attack_bonus(1.0)
 		self.base_saves()
 		self.equipment()
 		self.skills()
+		self.totaltohit = int(1.0 * level) + int(self.stats.strength)
 	
 	def stats(self):
 		bonus = self.level  / 4 
@@ -46,22 +48,7 @@ class Fighter(Character):
 
 	def __str__(self):
 		return "I am %s, a level %s %s, my stats are %s, my saves are %s, my base attack bonus is %s, my alignment is %s, I have %s gold" % (self.name, self.cclass, self.level, self.stats, self.saves, self.base_attack_bonus, self.alignment, self.gold)
-
-	def commit(self):
-		stats = json.dumps(self.stats.__dict__)
-		skills = json.dumps(self.skills)
-		saves = json.dumps(self.saves)
-		attack_bonus = self.base_attack_bonus
-		items = self.items
-		alignment = self.alignment
-		race = self.race
-		name = self.name
-		gold = self.gold
-		level = self.level
-		cclass = self.cclass
-		c = models.character(stats=stats, skills=skills, saves=saves, attack_bonus=attack_bonus, items=items, alignment=alignment, race=race, name=name, gold=gold, level=level, cclass=cclass)
-		c.save()
-		
+	
 	def jsonify(self):
 		return { 'Fighter':{
 				'stats': self.stats.__dict__,

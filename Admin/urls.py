@@ -4,7 +4,9 @@ from Admin import views
 
 urlpatterns = patterns('', 
 	url(r'^$', views.admin_index, name='admin_index'),
-	url(r'^Create', views.admin_create, name='admin_create'),
+	url(r'^Create$', views.admin_create, name='admin_create'),
+	url(r'^Create/Encounter$', views.admin_create_encounter, name='admin_create_encounter'),
+	url(r'^Create/Encounter/Generate$', views.ajax_encounter, name='ajax_encounter'),
 	url(r'^View/Sheet', views.admin_view, name='admin_view'),
 	url(r'^View/People', views.admin_view_people, name='admin_view_people'),
 	url(r'^Person', views.admin_person, name='admin_person'),
