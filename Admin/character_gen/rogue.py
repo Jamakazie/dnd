@@ -15,7 +15,7 @@ class Rogue(Character):
 		self.base_saves()
 		self.equipment()
 		self.skills()
-		self.totaltohit = int(self.stats.dexterity) + int(self.base_attack_bonus)
+		self.totaltohit = int(self.stats.dexterity) + int(.75 * self.level)
 	
 	def stats(self):
 		bonus = self.level  / 4 
