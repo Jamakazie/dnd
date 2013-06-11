@@ -5,7 +5,7 @@ from random import choice, randint
 import math
 class Character(object):
 	"""The Charater Creation Class"""
-	gold_values = [100, 300, 900, 2700, 6000]
+	gold_values = [0, 500, 1000,3000,6000,10500,16000,23500,33000,46000,62000,82000,108000,140000,185000,240000,315000,410000,530000,685000,880000] 
 	def __init__(self, level, race, name="No name"):
 		self.level = int(level)
 		self.race = race 
@@ -17,7 +17,7 @@ class Character(object):
 		if self.level <= len(self.gold_values) -1:
 			self.gold = self.gold_values[self.level]
 		else:
-			self.gold = self.level * 300
+			self.gold = self.level * 3000 + 880000
 	def base_attack_bonus(self, amount):
 		bab = '+';
 		base = math.floor(self.level * amount)

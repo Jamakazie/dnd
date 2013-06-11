@@ -13,10 +13,10 @@ class Fighter(Character):
 		self.hp(10)
 		self.base_attack_bonus(1.0)
 		self.base_saves()
-		self.equipment()
 		self.skills()
-		self.totaltohit = int(1.0 * self.level) + int((self.stats.strength - 10) / 2)
 		self.ac = 10 + int((self.stats.dexterity - 10) / 2 )
+		self.equipment()
+		self.totaltohit += int(1.0 * self.level) + int((self.stats.strength - 10) / 2)
 	
 	def stats(self):
 		bonus = self.level  / 4 
@@ -38,10 +38,36 @@ class Fighter(Character):
 	
 	def equipment(self):
 		equipments = []
-		weapon = Item('right hand', '+2 attack', 2000, False)
-		ring = Item('figner', '+2 main stat', 5000, False)
+		weapongold = self.gold * .6
+		armorgold = self.gold * .4
+		weaponbonus = 0
+		armorcost = 0
+		weaponcost = 0
+		while weapongold >= (weaponbonus + 1) ** 2 * 2000:
+			weaponbonus += 1
+			weaponcost = weaponbonus ** 2 * 2000
+		
+		armorbonus = 0
+		while armorgold >= (armorbonus + 1) ** 2 * 1000:
+			armorbonus += 1
+			armorcost = armorbonus ** 2 * 1000
+
+		leftover = self.gold - weaponcost - armorcost
+		bonus = 0
+		while leftover >= (bonus + 1) ** 2 * 1000:
+			bonus += 1
+
+		self.totaltohit = weaponbonus
+		self.stats.strength += bonus
+		self.ac += armorbonus
+		weapon = Item('Weapon', ('+%s attack' % weaponbonus), weaponcost, False)
+		armor = Item('Armor', ('+%s' % armorbonus), armorcost, False)
+		magic = Item('Magic', ('+%s strength' % bonus), bonus ** 2 * 1000, False)
+		leftover = Item('leftover', 'gold', self.gold, False)
 		equipments.append(weapon.__dict__)
-		equipments.append(ring.__dict__)
+		equipments.append(armor.__dict__)
+		equipments.append(magic.__dict__)
+		equipments.append(leftover.__dict__)
 		self.items = equipments
 	
 	def skills(self):
