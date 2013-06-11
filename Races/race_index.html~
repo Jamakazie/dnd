@@ -1,4 +1,0 @@
-{% extends 'template.html' %}
-{% block main %}
-<h2>Races</h2>
-{% endblock %}

@@ -1,4 +1,0 @@
-{% extends 'history_template.html'%}
-{% block main %}
-Information about ores
-{% endblock %}
